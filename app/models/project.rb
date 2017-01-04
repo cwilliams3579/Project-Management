@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def self.by_plan_and_tenant_id(tenant_id)
+  def self.by_plan_and_tenant(tenant_id)
     tenant = Tenant.find(tenant_id)
     if tenant.plan == 'premium'
       tenant.projects

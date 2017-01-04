@@ -69,11 +69,11 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:title, :details, :expected_completion_date, :tenant_id)
     end
-    
+
     def set_tenant
-      @tenant = Tenant.find(params[:tenant.id])
+      @tenant = Tenant.find(params[:tenant_id])
     end
-    
+
     def verify_tenant
       unless params[:tenant_id] == Tenant.current_tenant_id.to_s
         redirect_to :root, flash: { error: 'You are not authorized to access any organizations other than your own' }

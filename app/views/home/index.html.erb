@@ -1,9 +1,8 @@
 <% if current_user %>
 
-<h3>Organization: <%= @tenant.name %></h3>
-
+<h3 class="pull-right">Organization: <%= @tenant.name %></h3>
+<%= render 'projects/list' %>
 <% else %>
-
 <div class="jumbotron img-responsive">
 
 
@@ -86,4 +85,3 @@ Price: $20
 </div>
 
 <% end %>
-
