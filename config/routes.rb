@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resources :artifacts
   resources :tenants do
     resources :projects
@@ -9,19 +9,21 @@ Rails.application.routes.draw do
 
    root :to => "home#index"
 
-    
+
   # *MUST* come *BEFORE* devise's definitions (below)
-  as :user do   
+  as :user do
     match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
   end
 
-  devise_for :users, :controllers => { 
-    :registrations => "milia/registrations",
+  devise_for :users, :controllers => {
+    :registrations => "registrations",
     :confirmations => "confirmations",
-    :sessions => "milia/sessions", 
-    :passwords => "milia/passwords", 
+    :sessions => "milia/sessions",
+    :passwords => "milia/passwords",
   }
 
+  match '/plan/edit' => 'tenants#edit', via: :get, as: :edit_plan
+  match '/plan/update' => 'tenants#update', via: [:put, :patch], as: :update_plan
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
