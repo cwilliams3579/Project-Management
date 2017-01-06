@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.by__user_plan_and_tenant(params[:tenant_id], current_user)
+    @projects = Project.by_user_plan_and_tenant(params[:tenant_id], current_user)
   end
 
   # GET /projects/1
@@ -60,8 +60,8 @@ class ProjectsController < ApplicationController
   end
 
   def users
-    @project_users = (@project.users + (User.where(tenant_id, is_admin: true))) - [current_user]
-    @other_user = @tenant.users.where(tenant_id: is_admin: false) - (@project_users + [current_user])
+    @project_users = (@project.users + (User.where(tenant_id: @tenant.id, is_admin: true))) - [current_user]
+    @other_users = @tenant.users.where(is_admin: false) - (@project_users + [current_user])
   end
 
   def add_user
@@ -73,9 +73,9 @@ class ProjectsController < ApplicationController
       else
         format.html { redirect_to users_tenant_project_url(id: @project.id, tenant_id: @project.tenant_id), error: "User was not added to project" }
       end
-  end
+    end
 
-  private
+    private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
@@ -95,4 +95,5 @@ class ProjectsController < ApplicationController
         redirect_to :root, flash: { error: 'You are not authorized to access any organizations other than your own' }
       end
     end
+  end
 end
