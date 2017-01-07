@@ -56,12 +56,17 @@ class UserProjectsController < ApplicationController
   def destroy
     @user_project.destroy
     respond_to do |format|
-      format.html { redirect_to users_tenant_project_url(id: @user_project.project_id, tenant_id: @user_project.project.tenant_id), notice: 'User was successfully removed from the project' }
-      format.json { head :no_content }
-    end
+
+      format.html { redirect_to users_tenant_project_url(id: @user_project.project_id,
+
+        tenant_id: @user_project.project.tenant_id),
+
+        notice: 'User was successfully removed from the project' }
+        format.json { head :no_content }
+      end
   end
 
-  private
+    private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_project
       @user_project = UserProject.find(params[:id])

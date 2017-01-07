@@ -74,26 +74,25 @@ class ProjectsController < ApplicationController
         format.html { redirect_to users_tenant_project_url(id: @project.id, tenant_id: @project.tenant_id), error: "User was not added to project" }
       end
     end
+  end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
-    private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def project_params
+    params.require(:project).permit(:title, :details, :expected_completion_date, :tenant_id)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def project_params
-      params.require(:project).permit(:title, :details, :expected_completion_date, :tenant_id)
-    end
+  def set_tenant
+    @tenant = Tenant.find(params[:tenant_id])
+  end
 
-    def set_tenant
-      @tenant = Tenant.find(params[:tenant_id])
-    end
-
-    def verify_tenant
-      unless params[:tenant_id] == Tenant.current_tenant_id.to_s
-        redirect_to :root, flash: { error: 'You are not authorized to access any organizations other than your own' }
-      end
+  def verify_tenant
+    unless params[:tenant_id] == Tenant.current_tenant_id.to_s
+      redirect_to :root, flash: { error: 'You are not authorized to access any organizations other than your own' }
     end
   end
 end

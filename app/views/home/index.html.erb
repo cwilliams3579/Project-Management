@@ -1,7 +1,7 @@
 <% if current_user %>
 
 <h3 class="pull-right">Organization: <%= @tenant.name %></h3>
-<%= render 'projects/list' %>
+  <%= render 'projects/list' %>
 <% else %>
 <div class="jumbotron img-responsive">
 
@@ -40,7 +40,7 @@ Price: Free
 
 <p>
 
-<%= link_to 'Sign Up', new_user_registration_path(plan: 'free'), class: 'btn btn-primary sign-up' %>
+<%= link_to 'Sign Up', new_user_registration_path(plan: 'free'), :class => 'btn btn-primary sign-up' %>
 
 </p>
 

@@ -9,7 +9,7 @@ class TenantsController < ApplicationController
     respond_to do |format|
       Tenant.transaction do
         if @tenant.update(tenant_params)
-          if @tenant.plan == "premium" && @tenant.payment.blank?
+          if @tenant.plan == 'premium' && @tenant.payment.blank?
 
             @payment = Payment.new({ email: tenant_params["email"],
               token: params[:payment]["token"], tenant: @tenant })
@@ -39,6 +39,7 @@ class TenantsController < ApplicationController
       session[:tenant_id] = Tenant.current_tenant.id
       redirect_to home_index_path, notice: "Switched to organization #{@tenant.name}"
     end
+
     private
 
     def set_tenant

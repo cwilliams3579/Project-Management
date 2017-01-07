@@ -15,7 +15,7 @@
     <tbody>
       <% @projects.each do |project| %>
       <tr>
-        <td><%= link_to project.title, tenant_project_path(project, tenant_id: @tenant.id), class: "main-link" %></td>
+        <td><%= link_to project.title, tenant_project_path(project, tenant_id: @tenant.id), class: 'main-link' %></td>
         <td><%= project.details %></td>
         <td><%= project.expected_completion_date %></td>
         <td>
@@ -33,7 +33,7 @@
     </tbody>
   </table>
 <% else %>
-<p class="lead">You don't have any projects</p>
+  <p class="lead">You don't have any projects</p>
 <% end %>
 <% if (@tenant.can_create_projects?) %>
   <%= link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id),

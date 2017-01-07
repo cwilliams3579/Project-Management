@@ -203,6 +203,7 @@ color: #428bca;
 a.main-link:hover {
 
 background: none;
+color: red;
 
   }
 
@@ -230,10 +231,22 @@ padding-left: 0;
 
 .navbar.navbar-static-top {
 
-background: #000;
+background: #1b529e;;
 
 color: #fff !important;
 
 padding-bottom: 5px;
 
+}
+
+.rocket {
+  float: left;
+}
+
+.navbar-default .navbar-brand {
+    color: rgb(255, 255, 255);
+
+}
+.navbar-default:hover {
+  color: red;
 }
