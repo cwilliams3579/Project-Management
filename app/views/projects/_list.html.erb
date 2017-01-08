@@ -15,7 +15,7 @@
     <tbody>
       <% @projects.each do |project| %>
       <tr>
-        <td><%= link_to project.title, tenant_project_path(project, tenant_id: @tenant.id), class: 'main-link' %></td>
+        <td><%= link_to project.title, tenant_project_path(project, tenant_id: @tenant.id), :class => 'main-link' %></td>
         <td><%= project.details %></td>
         <td><%= project.expected_completion_date %></td>
         <td>
