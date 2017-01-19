@@ -109,22 +109,12 @@ padding-left: 15px;
 }
 
 .jumbotron {
-background-image: asset-url('Project-management.png');
+background-image: asset-url('manage.jpg');
 background-size: cover;
+height: 720px;
 color: #fff;
 font-family: 'Helvetica Neue' !important;
-font-stretch: expanded;
-max-height: 400px;
-height: 350px;
-padding-top: 95px;
-
-padding-bottom: 95px;
-
-margin-left: 15px;
-
-margin-right: 15px;
-
-// text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+// font-stretch: expanded;
 
 h2 {
 
@@ -235,7 +225,7 @@ background: #1b529e;;
 
 color: #fff !important;
 
-padding-bottom: 5px;
+// padding-bottom: 5px;
 
 }
 
